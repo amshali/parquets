@@ -71,7 +71,6 @@
     "jest-environment-node": "^29.7.0",
     "lz4js": "^0.2.0",
     "lzo": "^0.4.11",
-    "object-stream": "0.0.1",
     "prettier": "^3.0.3",
     "snappy": "^7.2.2",
     "ts-jest": "^29.1.1",

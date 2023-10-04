@@ -4,7 +4,7 @@ import { ParquetCompression } from '../src';
 import chai = require('chai');
 import fs = require('fs');
 import parquet = require('../src');
-const objectStream = require('object-stream');
+import { Readable } from "stream";
 
 const TEST_NUM_ROWS = 1000;
 const TEST_VTIME = Date.now();
@@ -536,7 +536,7 @@ describe('Parquet', function () {
       transform.writer.setMetadata('myuid', '420');
       transform.writer.setMetadata('fnord', 'dronf');
       const ostream = fs.createWriteStream('fruits_stream.parquet');
-      const istream = objectStream.fromArray(mkTestRows());
+      const istream = Readable.from(mkTestRows());
       istream.pipe(transform).pipe(ostream);
       await promisify(ostream.on.bind(ostream, 'finish'))();
       await readTestFile();
