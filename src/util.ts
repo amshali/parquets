@@ -2,14 +2,18 @@ import fs = require('fs');
 import { TBufferedTransport, TCompactProtocol, TFramedTransport } from 'thrift';
 import { FileMetaData, PageHeader } from './thrift';
 import { Writable } from 'stream';
+import * as promises from "node:fs/promises";
 
 export interface WriteStreamOptions {
-  flags?: string;
-  encoding?: string;
-  fd?: number;
-  mode?: number;
-  autoClose?: boolean;
-  start?: number;
+  flags?: string | undefined;
+  encoding?: BufferEncoding | undefined;
+  fd?: number | promises.FileHandle | undefined;
+  mode?: number | undefined;
+  autoClose?: boolean | undefined;
+  emitClose?: boolean | undefined;
+  start?: number | undefined;
+  signal?: AbortSignal | null | undefined;
+  highWaterMark?: number | undefined;
 }
 
 class UFramedTransport extends TFramedTransport {
@@ -169,7 +173,7 @@ export function osclose(os: Writable): Promise<void> {
   });
 }
 
-export function osopen(path: string, opts: WriteStreamOptions): Promise<fs.WriteStream> {
+export function osopen(path: string, opts: BufferEncoding | WriteStreamOptions): Promise<fs.WriteStream> {
   return new Promise((resolve, reject) => {
     const outputStream = fs.createWriteStream(path, opts);
     outputStream.once('open', fd => resolve(outputStream));

@@ -1,5 +1,4 @@
 import chai = require('chai');
-const assert = chai.assert;
 import parquet = require('../src');
 
 // tslint:disable:ter-prefer-arrow-callback
@@ -13,54 +12,54 @@ describe('ParquetSchema', function () {
       price: { type: 'DOUBLE' },
     });
 
-    assert.equal(schema.fieldList.length, 3);
-    assert(schema.fields.name);
-    assert(schema.fields.quantity);
-    assert(schema.fields.price);
+    chai.assert.equal(schema.fieldList.length, 3);
+    chai.assert(schema.fields.name);
+    chai.assert(schema.fields.quantity);
+    chai.assert(schema.fields.price);
 
     {
       const c = schema.fields.name;
-      assert.equal(c.name, 'name');
-      assert.equal(c.primitiveType, 'BYTE_ARRAY');
-      assert.equal(c.originalType, 'UTF8');
-      assert.deepEqual(c.path, ['name']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'name');
+      chai.assert.equal(c.primitiveType, 'BYTE_ARRAY');
+      chai.assert.equal(c.originalType, 'UTF8');
+      chai.assert.deepEqual(c.path, ['name']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
     {
       const c = schema.fields.quantity;
-      assert.equal(c.name, 'quantity');
-      assert.equal(c.primitiveType, 'INT64');
-      assert.equal(c.originalType, undefined);
-      assert.deepEqual(c.path, ['quantity']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'quantity');
+      chai.assert.equal(c.primitiveType, 'INT64');
+      chai.assert.equal(c.originalType, undefined);
+      chai.assert.deepEqual(c.path, ['quantity']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
     {
       const c = schema.fields.price;
-      assert.equal(c.name, 'price');
-      assert.equal(c.primitiveType, 'DOUBLE');
-      assert.equal(c.originalType, undefined);
-      assert.deepEqual(c.path, ['price']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'price');
+      chai.assert.equal(c.primitiveType, 'DOUBLE');
+      chai.assert.equal(c.originalType, undefined);
+      chai.assert.deepEqual(c.path, ['price']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
   });
@@ -72,54 +71,54 @@ describe('ParquetSchema', function () {
       price: { type: 'DOUBLE' },
     });
 
-    assert.equal(schema.fieldList.length, 3);
-    assert(schema.fields.name);
-    assert(schema.fields.quantity);
-    assert(schema.fields.price);
+    chai.assert.equal(schema.fieldList.length, 3);
+    chai.assert(schema.fields.name);
+    chai.assert(schema.fields.quantity);
+    chai.assert(schema.fields.price);
 
     {
       const c = schema.fields.name;
-      assert.equal(c.name, 'name');
-      assert.equal(c.primitiveType, 'BYTE_ARRAY');
-      assert.equal(c.originalType, 'UTF8');
-      assert.deepEqual(c.path, ['name']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'name');
+      chai.assert.equal(c.primitiveType, 'BYTE_ARRAY');
+      chai.assert.equal(c.originalType, 'UTF8');
+      chai.assert.deepEqual(c.path, ['name']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
     {
       const c = schema.fields.quantity;
-      assert.equal(c.name, 'quantity');
-      assert.equal(c.primitiveType, 'INT64');
-      assert.equal(c.originalType, undefined);
-      assert.deepEqual(c.path, ['quantity']);
-      assert.equal(c.repetitionType, 'OPTIONAL');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 1);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'quantity');
+      chai.assert.equal(c.primitiveType, 'INT64');
+      chai.assert.equal(c.originalType, undefined);
+      chai.assert.deepEqual(c.path, ['quantity']);
+      chai.assert.equal(c.repetitionType, 'OPTIONAL');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 1);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
     {
       const c = schema.fields.price;
-      assert.equal(c.name, 'price');
-      assert.equal(c.primitiveType, 'DOUBLE');
-      assert.equal(c.originalType, undefined);
-      assert.deepEqual(c.path, ['price']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'price');
+      chai.assert.equal(c.primitiveType, 'DOUBLE');
+      chai.assert.equal(c.originalType, undefined);
+      chai.assert.deepEqual(c.path, ['price']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
   });
 
@@ -130,54 +129,54 @@ describe('ParquetSchema', function () {
       price: { type: 'DOUBLE' },
     });
 
-    assert.equal(schema.fieldList.length, 3);
-    assert(schema.fields.name);
-    assert(schema.fields.quantity);
-    assert(schema.fields.price);
+    chai.assert.equal(schema.fieldList.length, 3);
+    chai.assert(schema.fields.name);
+    chai.assert(schema.fields.quantity);
+    chai.assert(schema.fields.price);
 
     {
       const c = schema.fields.name;
-      assert.equal(c.name, 'name');
-      assert.equal(c.primitiveType, 'BYTE_ARRAY');
-      assert.equal(c.originalType, 'UTF8');
-      assert.deepEqual(c.path, ['name']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'name');
+      chai.assert.equal(c.primitiveType, 'BYTE_ARRAY');
+      chai.assert.equal(c.originalType, 'UTF8');
+      chai.assert.deepEqual(c.path, ['name']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
     {
       const c = schema.fields.quantity;
-      assert.equal(c.name, 'quantity');
-      assert.equal(c.primitiveType, 'INT64');
-      assert.equal(c.originalType, undefined);
-      assert.deepEqual(c.path, ['quantity']);
-      assert.equal(c.repetitionType, 'REPEATED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 1);
-      assert.equal(c.dLevelMax, 1);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'quantity');
+      chai.assert.equal(c.primitiveType, 'INT64');
+      chai.assert.equal(c.originalType, undefined);
+      chai.assert.deepEqual(c.path, ['quantity']);
+      chai.assert.equal(c.repetitionType, 'REPEATED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 1);
+      chai.assert.equal(c.dLevelMax, 1);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
     {
       const c = schema.fields.price;
-      assert.equal(c.name, 'price');
-      assert.equal(c.primitiveType, 'DOUBLE');
-      assert.equal(c.originalType, undefined);
-      assert.deepEqual(c.path, ['price']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'price');
+      chai.assert.equal(c.primitiveType, 'DOUBLE');
+      chai.assert.equal(c.originalType, undefined);
+      chai.assert.deepEqual(c.path, ['price']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
   });
 
@@ -193,86 +192,86 @@ describe('ParquetSchema', function () {
       price: { type: 'DOUBLE' },
     });
 
-    assert.equal(schema.fieldList.length, 5);
-    assert(schema.fields.name);
-    assert(schema.fields.stock);
-    assert(schema.fields.stock.fields.quantity);
-    assert(schema.fields.stock.fields.warehouse);
-    assert(schema.fields.price);
+    chai.assert.equal(schema.fieldList.length, 5);
+    chai.assert(schema.fields.name);
+    chai.assert(schema.fields.stock);
+    chai.assert(schema.fields.stock.fields.quantity);
+    chai.assert(schema.fields.stock.fields.warehouse);
+    chai.assert(schema.fields.price);
 
     {
       const c = schema.fields.name;
-      assert.equal(c.name, 'name');
-      assert.equal(c.primitiveType, 'BYTE_ARRAY');
-      assert.equal(c.originalType, 'UTF8');
-      assert.deepEqual(c.path, ['name']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'name');
+      chai.assert.equal(c.primitiveType, 'BYTE_ARRAY');
+      chai.assert.equal(c.originalType, 'UTF8');
+      chai.assert.deepEqual(c.path, ['name']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
     {
       const c = schema.fields.stock;
-      assert.equal(c.name, 'stock');
-      assert.equal(c.primitiveType, undefined);
-      assert.equal(c.originalType, undefined);
-      assert.deepEqual(c.path, ['stock']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, undefined);
-      assert.equal(c.compression, undefined);
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, true);
-      assert.equal(c.fieldCount, 2);
+      chai.assert.equal(c.name, 'stock');
+      chai.assert.equal(c.primitiveType, undefined);
+      chai.assert.equal(c.originalType, undefined);
+      chai.assert.deepEqual(c.path, ['stock']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, undefined);
+      chai.assert.equal(c.compression, undefined);
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, true);
+      chai.assert.equal(c.fieldCount, 2);
     }
 
     {
       const c = schema.fields.stock.fields.quantity;
-      assert.equal(c.name, 'quantity');
-      assert.equal(c.primitiveType, 'INT64');
-      assert.equal(c.originalType, undefined);
-      assert.deepEqual(c.path, ['stock', 'quantity']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'quantity');
+      chai.assert.equal(c.primitiveType, 'INT64');
+      chai.assert.equal(c.originalType, undefined);
+      chai.assert.deepEqual(c.path, ['stock', 'quantity']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
     {
       const c = schema.fields.stock.fields.warehouse;
-      assert.equal(c.name, 'warehouse');
-      assert.equal(c.primitiveType, 'BYTE_ARRAY');
-      assert.equal(c.originalType, 'UTF8');
-      assert.deepEqual(c.path, ['stock', 'warehouse']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'warehouse');
+      chai.assert.equal(c.primitiveType, 'BYTE_ARRAY');
+      chai.assert.equal(c.originalType, 'UTF8');
+      chai.assert.deepEqual(c.path, ['stock', 'warehouse']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
     {
       const c = schema.fields.price;
-      assert.equal(c.name, 'price');
-      assert.equal(c.primitiveType, 'DOUBLE');
-      assert.equal(c.originalType, undefined);
-      assert.deepEqual(c.path, ['price']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'price');
+      chai.assert.equal(c.primitiveType, 'DOUBLE');
+      chai.assert.equal(c.originalType, undefined);
+      chai.assert.deepEqual(c.path, ['price']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
   });
 
@@ -289,86 +288,86 @@ describe('ParquetSchema', function () {
       price: { type: 'DOUBLE' },
     });
 
-    assert.equal(schema.fieldList.length, 5);
-    assert(schema.fields.name);
-    assert(schema.fields.stock);
-    assert(schema.fields.stock.fields.quantity);
-    assert(schema.fields.stock.fields.warehouse);
-    assert(schema.fields.price);
+    chai.assert.equal(schema.fieldList.length, 5);
+    chai.assert(schema.fields.name);
+    chai.assert(schema.fields.stock);
+    chai.assert(schema.fields.stock.fields.quantity);
+    chai.assert(schema.fields.stock.fields.warehouse);
+    chai.assert(schema.fields.price);
 
     {
       const c = schema.fields.name;
-      assert.equal(c.name, 'name');
-      assert.equal(c.primitiveType, 'BYTE_ARRAY');
-      assert.equal(c.originalType, 'UTF8');
-      assert.deepEqual(c.path, ['name']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'name');
+      chai.assert.equal(c.primitiveType, 'BYTE_ARRAY');
+      chai.assert.equal(c.originalType, 'UTF8');
+      chai.assert.deepEqual(c.path, ['name']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
     {
       const c = schema.fields.stock;
-      assert.equal(c.name, 'stock');
-      assert.equal(c.primitiveType, undefined);
-      assert.equal(c.originalType, undefined);
-      assert.deepEqual(c.path, ['stock']);
-      assert.equal(c.repetitionType, 'OPTIONAL');
-      assert.equal(c.encoding, undefined);
-      assert.equal(c.compression, undefined);
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 1);
-      assert.equal(!!c.isNested, true);
-      assert.equal(c.fieldCount, 2);
+      chai.assert.equal(c.name, 'stock');
+      chai.assert.equal(c.primitiveType, undefined);
+      chai.assert.equal(c.originalType, undefined);
+      chai.assert.deepEqual(c.path, ['stock']);
+      chai.assert.equal(c.repetitionType, 'OPTIONAL');
+      chai.assert.equal(c.encoding, undefined);
+      chai.assert.equal(c.compression, undefined);
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 1);
+      chai.assert.equal(!!c.isNested, true);
+      chai.assert.equal(c.fieldCount, 2);
     }
 
     {
       const c = schema.fields.stock.fields.quantity;
-      assert.equal(c.name, 'quantity');
-      assert.equal(c.primitiveType, 'INT64');
-      assert.equal(c.originalType, undefined);
-      assert.deepEqual(c.path, ['stock', 'quantity']);
-      assert.equal(c.repetitionType, 'OPTIONAL');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 2);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'quantity');
+      chai.assert.equal(c.primitiveType, 'INT64');
+      chai.assert.equal(c.originalType, undefined);
+      chai.assert.deepEqual(c.path, ['stock', 'quantity']);
+      chai.assert.equal(c.repetitionType, 'OPTIONAL');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 2);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
     {
       const c = schema.fields.stock.fields.warehouse;
-      assert.equal(c.name, 'warehouse');
-      assert.equal(c.primitiveType, 'BYTE_ARRAY');
-      assert.equal(c.originalType, 'UTF8');
-      assert.deepEqual(c.path, ['stock', 'warehouse']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 1);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'warehouse');
+      chai.assert.equal(c.primitiveType, 'BYTE_ARRAY');
+      chai.assert.equal(c.originalType, 'UTF8');
+      chai.assert.deepEqual(c.path, ['stock', 'warehouse']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 1);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
     {
       const c = schema.fields.price;
-      assert.equal(c.name, 'price');
-      assert.equal(c.primitiveType, 'DOUBLE');
-      assert.equal(c.originalType, undefined);
-      assert.deepEqual(c.path, ['price']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'price');
+      chai.assert.equal(c.primitiveType, 'DOUBLE');
+      chai.assert.equal(c.originalType, undefined);
+      chai.assert.deepEqual(c.path, ['price']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
   });
 
@@ -385,86 +384,86 @@ describe('ParquetSchema', function () {
       price: { type: 'DOUBLE' },
     });
 
-    assert.equal(schema.fieldList.length, 5);
-    assert(schema.fields.name);
-    assert(schema.fields.stock);
-    assert(schema.fields.stock.fields.quantity);
-    assert(schema.fields.stock.fields.warehouse);
-    assert(schema.fields.price);
+    chai.assert.equal(schema.fieldList.length, 5);
+    chai.assert(schema.fields.name);
+    chai.assert(schema.fields.stock);
+    chai.assert(schema.fields.stock.fields.quantity);
+    chai.assert(schema.fields.stock.fields.warehouse);
+    chai.assert(schema.fields.price);
 
     {
       const c = schema.fields.name;
-      assert.equal(c.name, 'name');
-      assert.equal(c.primitiveType, 'BYTE_ARRAY');
-      assert.equal(c.originalType, 'UTF8');
-      assert.deepEqual(c.path, ['name']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'name');
+      chai.assert.equal(c.primitiveType, 'BYTE_ARRAY');
+      chai.assert.equal(c.originalType, 'UTF8');
+      chai.assert.deepEqual(c.path, ['name']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
     {
       const c = schema.fields.stock;
-      assert.equal(c.name, 'stock');
-      assert.equal(c.primitiveType, undefined);
-      assert.equal(c.originalType, undefined);
-      assert.deepEqual(c.path, ['stock']);
-      assert.equal(c.repetitionType, 'REPEATED');
-      assert.equal(c.encoding, undefined);
-      assert.equal(c.compression, undefined);
-      assert.equal(c.rLevelMax, 1);
-      assert.equal(c.dLevelMax, 1);
-      assert.equal(!!c.isNested, true);
-      assert.equal(c.fieldCount, 2);
+      chai.assert.equal(c.name, 'stock');
+      chai.assert.equal(c.primitiveType, undefined);
+      chai.assert.equal(c.originalType, undefined);
+      chai.assert.deepEqual(c.path, ['stock']);
+      chai.assert.equal(c.repetitionType, 'REPEATED');
+      chai.assert.equal(c.encoding, undefined);
+      chai.assert.equal(c.compression, undefined);
+      chai.assert.equal(c.rLevelMax, 1);
+      chai.assert.equal(c.dLevelMax, 1);
+      chai.assert.equal(!!c.isNested, true);
+      chai.assert.equal(c.fieldCount, 2);
     }
 
     {
       const c = schema.fields.stock.fields.quantity;
-      assert.equal(c.name, 'quantity');
-      assert.equal(c.primitiveType, 'INT64');
-      assert.equal(c.originalType, undefined);
-      assert.deepEqual(c.path, ['stock', 'quantity']);
-      assert.equal(c.repetitionType, 'OPTIONAL');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 1);
-      assert.equal(c.dLevelMax, 2);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'quantity');
+      chai.assert.equal(c.primitiveType, 'INT64');
+      chai.assert.equal(c.originalType, undefined);
+      chai.assert.deepEqual(c.path, ['stock', 'quantity']);
+      chai.assert.equal(c.repetitionType, 'OPTIONAL');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 1);
+      chai.assert.equal(c.dLevelMax, 2);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
     {
       const c = schema.fields.stock.fields.warehouse;
-      assert.equal(c.name, 'warehouse');
-      assert.equal(c.primitiveType, 'BYTE_ARRAY');
-      assert.equal(c.originalType, 'UTF8');
-      assert.deepEqual(c.path, ['stock', 'warehouse']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 1);
-      assert.equal(c.dLevelMax, 1);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'warehouse');
+      chai.assert.equal(c.primitiveType, 'BYTE_ARRAY');
+      chai.assert.equal(c.originalType, 'UTF8');
+      chai.assert.deepEqual(c.path, ['stock', 'warehouse']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 1);
+      chai.assert.equal(c.dLevelMax, 1);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
 
     {
       const c = schema.fields.price;
-      assert.equal(c.name, 'price');
-      assert.equal(c.primitiveType, 'DOUBLE');
-      assert.equal(c.originalType, undefined);
-      assert.deepEqual(c.path, ['price']);
-      assert.equal(c.repetitionType, 'REQUIRED');
-      assert.equal(c.encoding, 'PLAIN');
-      assert.equal(c.compression, 'UNCOMPRESSED');
-      assert.equal(c.rLevelMax, 0);
-      assert.equal(c.dLevelMax, 0);
-      assert.equal(!!c.isNested, false);
-      assert.equal(c.fieldCount, undefined);
+      chai.assert.equal(c.name, 'price');
+      chai.assert.equal(c.primitiveType, 'DOUBLE');
+      chai.assert.equal(c.originalType, undefined);
+      chai.assert.deepEqual(c.path, ['price']);
+      chai.assert.equal(c.repetitionType, 'REQUIRED');
+      chai.assert.equal(c.encoding, 'PLAIN');
+      chai.assert.equal(c.compression, 'UNCOMPRESSED');
+      chai.assert.equal(c.rLevelMax, 0);
+      chai.assert.equal(c.dLevelMax, 0);
+      chai.assert.equal(!!c.isNested, false);
+      chai.assert.equal(c.fieldCount, undefined);
     }
   });
 

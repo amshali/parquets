@@ -6,6 +6,7 @@
 */
 import * as thrift from "thrift";
 import * as BoundaryOrder from "./BoundaryOrder";
+import { Int64 } from "thrift";
 export interface IColumnIndexArgs {
     null_pages: Array<boolean>;
     min_values: Array<Buffer>;
@@ -18,7 +19,7 @@ export class ColumnIndex {
     public min_values: Array<Buffer>;
     public max_values: Array<Buffer>;
     public boundary_order: BoundaryOrder.BoundaryOrder;
-    public null_counts?: Array<Int64>;
+    public null_counts?: Array<number | Int64>;
     constructor(args: IColumnIndexArgs) {
         if (args != null && args.null_pages != null) {
             this.null_pages = args.null_pages;

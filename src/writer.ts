@@ -8,6 +8,7 @@ import * as Shred from './shred';
 import { ColumnChunk, ColumnMetaData, CompressionCodec, ConvertedType, DataPageHeader, DataPageHeaderV2, Encoding, FieldRepetitionType, FileMetaData, KeyValue, PageHeader, PageType, RowGroup, SchemaElement, Type } from './thrift';
 import * as Util from './util';
 import Int64 = require('node-int64');
+import * as promises from "node:fs/promises";
 
 /**
  * Parquet File Magic String
@@ -38,12 +39,15 @@ export interface ParquetWriterOptions {
   useDataPageV2?: boolean;
 
   // Write Stream Options
-  flags?: string;
-  encoding?: string;
-  fd?: number;
-  mode?: number;
-  autoClose?: boolean;
-  start?: number;
+  flags?: string | undefined;
+  encoding?: BufferEncoding | undefined;
+  fd?: number | promises.FileHandle | undefined;
+  mode?: number | undefined;
+  autoClose?: boolean | undefined;
+  emitClose?: boolean | undefined;
+  start?: number | undefined;
+  signal?: AbortSignal | null | undefined;
+  highWaterMark?: number | undefined;
 }
 
 /**
