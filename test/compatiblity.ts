@@ -71,6 +71,18 @@ async function readAndWriteNation(compression: ParquetCompression) {
   fs.unlinkSync(tempFile);
 }
 
+async function readNationImpala(compression: ParquetCompression) {
+  const data = readTpchNationSchema('test/parquet-testdata/tpch/nation.csv');
+  const impalaFile = `test/parquet-testdata/impala/1.1.1-${compression}/nation.impala.parquet`;
+  const reader = await parquet.ParquetReader.openFile(impalaFile);
+  const cursor = reader.getCursor();
+  for (let i = 0; i < data.length; i++) {
+    chai.assert.deepEqual(await cursor.next(), data[i]);  
+  }
+  chai.assert.equal(await cursor.next(), null);
+  reader.close();
+}
+
 describe('Parquet', function () {
   jest.setTimeout(90000);
 
@@ -83,6 +95,15 @@ describe('Parquet', function () {
     });
     it('write and read nation test file snappy', async () => {
       await readAndWriteNation('SNAPPY');
+    });
+    it('reads impala nation test file uncompressed', async () => {
+      await readNationImpala('UNCOMPRESSED');
+    });
+    it('reads impala nation test file gzip', async () => {
+      await readNationImpala('GZIP');
+    });
+    it('reads impala nation test file snappy', async () => {
+      await readNationImpala('SNAPPY');
     });
   });
 });
