@@ -43,14 +43,14 @@ describe('ParquetCodec::RLE', function () {
           bitWidth: 3
         });
 
-      assert.deepEqual(buf, new Buffer([0x05, 0x88, 0xc6, 0xfa, 0x2e, 0x00, 0x00]));
+      assert.deepEqual(buf, Buffer.from([0x05, 0x88, 0xc6, 0xfa, 0x2e, 0x00, 0x00]));
     });
 
     it('should decode bitpacked values', function () {
       const vals = parquet_codec_rle.decodeValues(
         'INT32',
         {
-          buffer: new Buffer([0x05, 0x88, 0xc6, 0xfa, 0x2e, 0x00, 0x00]),
+          buffer: Buffer.from([0x05, 0x88, 0xc6, 0xfa, 0x2e, 0x00, 0x00]),
           offset: 0,
         },
         10,

@@ -261,7 +261,7 @@ export class ParquetEnvelopeReader {
 
   static async openBuffer(buffer: Buffer): Promise<ParquetEnvelopeReader> {
     const readFn = (position: number, length: number) =>
-      Promise.resolve(buffer.slice(position, position + length));
+      Promise.resolve(buffer.subarray(position, position + length));
     const closeFn = () => Promise.resolve();
     return new ParquetEnvelopeReader(readFn, closeFn, buffer.length);
   }
@@ -324,8 +324,7 @@ export class ParquetEnvelopeReader {
   async readFooter(): Promise<FileMetaData> {
     const trailerLen = PARQUET_MAGIC.length + 4;
     const trailerBuf = await this.read(this.fileSize - trailerLen, trailerLen);
-
-    if (trailerBuf.slice(4).toString() !== PARQUET_MAGIC) {
+    if (trailerBuf.subarray(trailerBuf.length - 4, trailerBuf.length).toString() !== PARQUET_MAGIC) {
       throw new Error('not a valid parquet file');
     }
 
@@ -425,7 +424,7 @@ function decodeDataPage(cursor: CursorBuffer, header: PageHeader, column: Parque
   if (compression !== 'UNCOMPRESSED') {
     const valuesBuf = Compression.inflate(
       compression,
-      cursor.buffer.slice(cursor.offset, cursorEnd),
+      cursor.buffer.subarray(cursor.offset, cursorEnd),
       header.uncompressed_page_size
     );
     dataCursor = {
@@ -566,7 +565,7 @@ function decodeDataPageV2(cursor: CursorBuffer, header: PageHeader, column: Parq
   if (header.data_page_header_v2.is_compressed) {
     const valuesBuf = Compression.inflate(
       compression,
-      cursor.buffer.slice(cursor.offset, cursorEnd),
+      cursor.buffer.subarray(cursor.offset, cursorEnd),
       header.uncompressed_page_size
     );
 

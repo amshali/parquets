@@ -14,6 +14,9 @@ interface TestOptions {
   compression: ParquetCompression;
 }
 
+const FRUITS_PARQUET = '/tmp/fruits.parquet';
+const EMPTY_PARQUET = '/tmp/empty.parquet';
+
 function mkTestSchema(opts: TestOptions) {
   return new parquet.ParquetSchema({
     name: { type: 'UTF8', compression: opts.compression },
@@ -129,12 +132,12 @@ async function writeTestData(writer: parquet.ParquetWriter<unknown>, opts: TestO
 
 async function writeTestFile(opts: TestOptions) {
   const schema = mkTestSchema(opts);
-  const writer = await parquet.ParquetWriter.openFile(schema, 'fruits.parquet', opts);
+  const writer = await parquet.ParquetWriter.openFile(schema, FRUITS_PARQUET, opts);
   await writeTestData(writer, opts);
 }
 
 async function readTestFile() {
-  const reader = await parquet.ParquetReader.openFile('fruits.parquet');
+  const reader = await parquet.ParquetReader.openFile(FRUITS_PARQUET);
   await checkTestData(reader);
 }
 
@@ -428,25 +431,25 @@ describe('Parquet', function () {
     it('write an empty test file and then read it back', async function () {
       const opts: TestOptions = { useDataPageV2: false, compression: 'UNCOMPRESSED' };
       const schema = mkTestSchema(opts);
-      const writer = await parquet.ParquetWriter.openFile(schema, 'empty.parquet', opts);
+      const writer = await parquet.ParquetWriter.openFile(schema, EMPTY_PARQUET, opts);
       await writer.close();
-      const reader = await parquet.ParquetReader.openFile('empty.parquet');
+      const reader = await parquet.ParquetReader.openFile(EMPTY_PARQUET);
       expect(reader.getRowCount()).toBe(0);
     });
 
     it('write an empty test file with empty schema and then read it back', async function () {
       const opts: TestOptions = { useDataPageV2: false, compression: 'UNCOMPRESSED' };
       const schema = new parquet.ParquetSchema({});
-      const writer = await parquet.ParquetWriter.openFile(schema, 'empty.parquet', opts);
+      const writer = await parquet.ParquetWriter.openFile(schema, EMPTY_PARQUET, opts);
       await writer.close();
-      const reader = await parquet.ParquetReader.openFile('empty.parquet');
+      const reader = await parquet.ParquetReader.openFile(EMPTY_PARQUET);
       expect(reader.getRowCount()).toBe(0);
     });
 
     it('supports reading from a buffer', function () {
       const opts: TestOptions = { useDataPageV2: false, compression: 'UNCOMPRESSED' };
       return writeTestFile(opts).then(async function () {
-        const data = await promisify(fs.readFile)('fruits.parquet');
+        const data = await promisify(fs.readFile)(FRUITS_PARQUET);
         const reader = await parquet.ParquetReader.openBuffer(data);
         await checkTestData(reader);
       });
@@ -487,18 +490,18 @@ describe('Parquet', function () {
     it('write an empty test file and then read it back', async function () {
       const opts: TestOptions = { useDataPageV2: true, compression: 'UNCOMPRESSED' };
       const schema = mkTestSchema(opts);
-      const writer = await parquet.ParquetWriter.openFile(schema, 'empty.parquet', opts);
+      const writer = await parquet.ParquetWriter.openFile(schema, EMPTY_PARQUET, opts);
       await writer.close();
-      const reader = await parquet.ParquetReader.openFile('empty.parquet');
+      const reader = await parquet.ParquetReader.openFile(EMPTY_PARQUET);
       expect(reader.getRowCount()).toBe(0);
     });
 
     it('write an empty test file with empty schema and then read it back', async function () {
       const opts: TestOptions = { useDataPageV2: true, compression: 'UNCOMPRESSED' };
       const schema = new parquet.ParquetSchema({});
-      const writer = await parquet.ParquetWriter.openFile(schema, 'empty.parquet', opts);
+      const writer = await parquet.ParquetWriter.openFile(schema, EMPTY_PARQUET, opts);
       await writer.close();
-      const reader = await parquet.ParquetReader.openFile('empty.parquet');
+      const reader = await parquet.ParquetReader.openFile(EMPTY_PARQUET);
       expect(reader.getRowCount()).toBe(0);
     });
     it('write a test file with GZIP compression and then read it back', function () {
@@ -535,7 +538,7 @@ describe('Parquet', function () {
       const transform = new parquet.ParquetTransformer(schema, opts);
       transform.writer.setMetadata('myuid', '420');
       transform.writer.setMetadata('fnord', 'dronf');
-      const ostream = fs.createWriteStream('fruits_stream.parquet');
+      const ostream = fs.createWriteStream('/tmp/fruits_stream.parquet');
       const istream = Readable.from(mkTestRows());
       istream.pipe(transform).pipe(ostream);
       await promisify(ostream.on.bind(ostream, 'finish'))();
@@ -547,7 +550,7 @@ describe('Parquet', function () {
     describe('using the AsyncIterable API', function () {
       it('allows iteration on a cursor using for-await-of', async function () {
         await writeTestFile({ useDataPageV2: true, compression: 'GZIP' });
-        const reader = await parquet.ParquetReader.openFile<{ name: string }>('fruits.parquet');
+        const reader = await parquet.ParquetReader.openFile<{ name: string }>(FRUITS_PARQUET);
 
         async function checkTestDataUsingForAwaitOf(cursor: AsyncIterable<{ name: string }>) {
           const names: Set<string> = new Set();
