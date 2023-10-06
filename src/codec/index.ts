@@ -12,7 +12,7 @@ export const PARQUET_CODEC: Record<ParquetCodec, ParquetCodecKit> = {
   },
   PLAIN_DICTIONARY: {
     encodeValues: PLAIN.encodeValues,
-    decodeValues: PLAIN.decodeValues
+    decodeValues: RLE.decodeValues
   },
   RLE: {
     encodeValues: RLE.encodeValues,

@@ -3,6 +3,8 @@ import { TBufferedTransport, TCompactProtocol, TFramedTransport } from 'thrift';
 import { FileMetaData, PageHeader } from './thrift';
 import { Writable } from 'stream';
 import * as promises from "node:fs/promises";
+import { CursorBuffer, ParquetCodecOptions, PARQUET_CODEC } from './codec';
+import { ParquetCodec, PrimitiveType } from './declare';
 
 export interface WriteStreamOptions {
   flags?: string | undefined;
@@ -201,4 +203,15 @@ export function fieldIndexOf(arr: string[][], elem: string[]): number {
 
 export function load(name: string): any {
   return (module || global as any)['require'](name);
+}
+
+/**
+ * Decode a consecutive array of data using one of the parquet encodings
+ */
+export function decodeValues(type: PrimitiveType, encoding: ParquetCodec, cursor: CursorBuffer,
+    count: number, opts: ParquetCodecOptions): any[] {
+  if (!(encoding in PARQUET_CODEC)) {
+    throw new Error(`invalid encoding: ${encoding}`);
+  }
+  return PARQUET_CODEC[encoding].decodeValues(type, cursor, count, opts);
 }
